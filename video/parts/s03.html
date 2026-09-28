@@ -1,0 +1,49 @@
+<!-- ===== S3 1958 PERCEPTRON ===== -->
+<div class="scene" id="s3" data-start="38" data-sheet="03" data-chap="学习" data-tick="2" data-dwg="AI-1958" data-by="Frank Rosenblatt" data-site="Cornell Aeronautical Lab, NY">
+<div class="year f" data-t="0.3">1958</div>
+<div class="title f" data-t="0.6">会学习的机器</div>
+<div class="note w" data-t="1.3">← 罗森布拉特的感知机</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. MARK I PERCEPTRON</span>模仿神经元：把输入加权求和，超过阈值就“激活”。答错了就调整权重——机器第一次能从经验中学习。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<g data-g="0.8,0.12">
+<circle class="d" cx="90" cy="150" r="30"/><circle class="d" cx="90" cy="260" r="30"/><circle class="d" cx="90" cy="370" r="30"/><circle class="d" cx="90" cy="480" r="30"/>
+</g>
+<g data-g="1.1,0.1">
+<text class="f m" x="90" y="159" text-anchor="middle" font-size="24">x₁</text><text class="f m" x="90" y="269" text-anchor="middle" font-size="24">x₂</text>
+<text class="f m" x="90" y="379" text-anchor="middle" font-size="24">x₃</text><text class="f m" x="90" y="489" text-anchor="middle" font-size="24">x₄</text>
+</g>
+<text class="f" data-t="1.5" x="90" y="552" text-anchor="middle" font-size="20">输入</text>
+<g data-g="1.6,0.15">
+<path class="d" id="s3l1" d="M117.7,161.4 L464.5,292.1" stroke-width="4"/>
+<path class="d" id="s3l2" d="M119.7,264.1 L460.6,306.8" stroke-width="2"/>
+<path class="d" id="s3l3" d="M119.7,365.9 L460.6,323.2" stroke-width="3"/>
+<path class="d" id="s3l4" d="M117.7,468.6 L464.5,337.9" stroke-width="1.5"/>
+</g>
+<g data-g="2.3,0.1">
+<text class="f m" x="272" y="208" font-size="20">w₁</text><text class="f m" x="280" y="272" font-size="20">w₂</text>
+<text class="f m" x="280" y="372" font-size="20">w₃</text><text class="f m" x="272" y="440" font-size="20">w₄</text>
+</g>
+<circle class="d" data-t="2.2" cx="520" cy="315" r="60" stroke-width="3"/>
+<text class="f" data-t="2.6" x="520" y="336" text-anchor="middle" font-size="60">Σ</text>
+<path class="d" data-t="2.8" d="M580,315 H636" marker-end="url(#ar)"/>
+<rect class="d" data-t="2.9" x="640" y="250" width="150" height="130"/>
+<path class="d" data-t="3.2" d="M660,360 H775 M660,360 V268" stroke-width="1" stroke-opacity=".6"/>
+<path class="d" data-t="3.4" d="M662,352 H715 V278 H772" stroke-width="3"/>
+<text class="f" data-t="3.5" x="715" y="410" text-anchor="middle" font-size="20">阈值 θ</text>
+<path class="d" data-t="3.7" d="M790,315 H878" marker-end="url(#ar)"/>
+<circle class="d" data-t="3.9" cx="916" cy="315" r="34" stroke-width="3"/>
+<text class="f m" data-t="4.1" x="916" y="325" text-anchor="middle" font-size="30">y</text>
+<text class="f" data-t="4.2" x="916" y="385" text-anchor="middle" font-size="20">输出：是 / 否</text>
+<circle class="flow" data-path="s3l1" data-t="4.4" data-period="1.4" r="5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s3l2" data-t="4.7" data-period="1.4" r="5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s3l3" data-t="4.9" data-period="1.4" r="5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s3l4" data-t="5.2" data-period="1.4" r="5" fill="#ffe27a" stroke="none"/>
+<path class="d ys" data-t="6.2" data-d="1.4" d="M916,349 V590 H300 V428" stroke-width="2.5" marker-end="url(#ary)"/>
+</svg>
+<div class="lb hand w" data-t="7.2" style="left:560px;top:540px;font-size:32px">答错了？回头调整权重</div>
+<div class="lb hand w" data-t="8.4" style="left:600px;top:24px;font-size:28px">《纽约时报》1958：</div>
+<div class="lb hand w" data-t="9.4" style="left:600px;top:66px;font-size:28px">“它将能走路、说话、看见、写字……”</div>
+<div class="lb hand w" data-t="11.3" style="left:600px;top:112px;font-size:26px;opacity:.85">（剧透：还早得很）</div>
+</div>
+</div>

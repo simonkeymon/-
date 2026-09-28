@@ -1,0 +1,43 @@
+<!-- ===== S5 1980s EXPERT SYSTEMS ===== -->
+<div class="scene" id="s5" data-start="66" data-sheet="05" data-chap="规则" data-tick="4" data-dwg="AI-1980" data-by="Edward Feigenbaum 等" data-site="Stanford · DEC">
+<div class="year f" data-t="0.3">1980s</div>
+<div class="title f" data-t="0.6">专家系统</div>
+<div class="note w" data-t="1.3">← 把专家的经验写成规则</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. MYCIN · XCON</span>成百上千条“如果……那么……”规则，帮医生诊断感染、帮企业配置计算机。热潮一度价值数十亿美元，1987 年市场崩塌，第二次寒冬来临。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.8" x="250" y="40" width="180" height="64"/>
+<text class="f" data-t="1.0" x="340" y="74" text-anchor="middle" font-size="26">发烧？</text>
+<text class="f m" data-t="1.1" x="340" y="96" text-anchor="middle" font-size="13" fill-opacity=".75">IF FEVER</text>
+<path class="d" data-t="1.4" d="M300,104 L192,194" marker-end="url(#ar)"/>
+<path class="d" data-t="1.5" d="M380,104 L508,194" marker-end="url(#ar)"/>
+<text class="f" data-t="1.7" x="224" y="146" font-size="20">是</text><text class="f" data-t="1.8" x="460" y="146" font-size="20">否</text>
+<rect class="d" data-t="1.9" x="80" y="200" width="180" height="64"/>
+<text class="f" data-t="2.1" x="170" y="234" text-anchor="middle" font-size="26">咳嗽？</text>
+<text class="f m" data-t="2.2" x="170" y="256" text-anchor="middle" font-size="13" fill-opacity=".75">IF COUGH</text>
+<rect class="d" data-t="2.0" x="440" y="200" width="180" height="64"/><rect class="d" data-t="2.2" x="446" y="206" width="168" height="52" stroke-width="1"/>
+<text class="f" data-t="2.4" x="530" y="241" text-anchor="middle" font-size="24">THEN 观察</text>
+<path class="d" data-t="2.6" d="M140,264 L92,354" marker-end="url(#ar)"/>
+<path class="d" data-t="2.7" d="M200,264 L258,354" marker-end="url(#ar)"/>
+<text class="f" data-t="2.8" x="92" y="314" font-size="20">是</text><text class="f" data-t="2.9" x="238" y="314" font-size="20">否</text>
+<rect class="d" data-t="3.0" x="0" y="360" width="170" height="64"/><rect class="d" data-t="3.2" x="6" y="366" width="158" height="52" stroke-width="1"/>
+<text class="f" data-t="3.3" x="85" y="401" text-anchor="middle" font-size="24">THEN 流感</text>
+<rect class="d" data-t="3.1" x="190" y="360" width="170" height="64"/><rect class="d" data-t="3.3" x="196" y="366" width="158" height="52" stroke-width="1"/>
+<text class="f" data-t="3.4" x="275" y="401" text-anchor="middle" font-size="24">THEN 化验</text>
+<g class="cards"></g>
+<rect class="d" data-t="3.6" x="680" y="40" width="320" height="200" stroke-width="2.5"/>
+<g data-g="4.1,0.25">
+<text class="f m" x="704" y="84" font-size="18" fill-opacity=".75">RULE #0427</text>
+<text class="f m" x="704" y="128" font-size="20">IF   发烧 AND 咳嗽</text>
+<text class="f m" x="704" y="170" font-size="20">THEN 流感  (CF 0.7)</text>
+</g>
+<text class="f m c" data-t="5.0" data-d="2.2" data-to="2500" data-suf="+" x="680" y="330" font-size="46" font-weight="600">0</text>
+<text class="f" data-t="5.2" x="682" y="362" font-size="18">条规则 · 还在不断增加</text>
+<path class="d" data-t="7.4" d="M660,620 H1040" stroke-width="1" stroke-opacity=".7"/>
+<text class="f m" data-t="7.4" x="660" y="645" font-size="14" fill-opacity=".75">AI 产业规模 1980 → 1993</text>
+<path class="d" data-t="7.6" data-d="2.2" d="M660,604 C760,596 830,520 900,478 L920,474 C945,480 960,596 1040,608" stroke-width="2.5"/>
+</svg>
+<div class="lb hand w" data-t="9.6" style="left:700px;top:414px;font-size:30px">1987：第二次寒冬 ↘</div>
+<div class="lb hand w" data-t="6.2" style="left:10px;top:462px;font-size:32px">规则写不完，也维护不动</div>
+</div>
+</div>
