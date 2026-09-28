@@ -1,0 +1,72 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="fonts/a_neon.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#04050b;font-family:'Noto Sans SC',sans-serif;color:#e8f7ff;position:relative}
+.sky{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 62%,#2a0b4a 0%,#0b0620 45%,#04050b 80%)}
+.sun{position:absolute;left:50%;top:330px;width:520px;height:520px;margin-left:-260px;border-radius:50%;
+ background:linear-gradient(180deg,#ffd36e 0%,#ff5fa2 55%,#b02bff 100%);opacity:.22;filter:blur(1px);
+ -webkit-mask:repeating-linear-gradient(180deg,#000 0 22px,transparent 22px 30px)}
+.floor{position:absolute;left:-50%;right:-50%;bottom:-120px;height:560px;transform:perspective(420px) rotateX(62deg);transform-origin:50% 0;
+ background-image:linear-gradient(#ff2fd1 2px,transparent 2px),linear-gradient(90deg,#ff2fd1 2px,transparent 2px);background-size:90px 90px;opacity:.45;
+ -webkit-mask:linear-gradient(180deg,transparent 0%,#000 40%)}
+.horizon{position:absolute;left:0;right:0;top:700px;height:2px;background:#ff5fd8;box-shadow:0 0 18px 4px #ff2fd1}
+.hud{position:absolute;top:56px;left:80px;font-family:'JetBrains Mono';font-size:22px;color:#39ffb0;letter-spacing:2px;text-shadow:0 0 8px #39ffb0}
+.hud span{color:#6a7c90;text-shadow:none}
+.hudr{position:absolute;top:56px;right:80px;font-family:'JetBrains Mono';font-size:22px;color:#ff5fd8;text-shadow:0 0 8px #ff2fd1;text-align:right;line-height:1.6}
+.year{position:absolute;top:130px;left:76px;font-family:'Orbitron';font-weight:900;font-size:230px;line-height:1;color:transparent;
+ -webkit-text-stroke:3px #33e9ff;text-shadow:0 0 30px rgba(51,233,255,.55);letter-spacing:6px}
+.title{position:absolute;top:380px;left:80px;font-weight:900;font-size:112px;letter-spacing:8px;color:#fff;
+ text-shadow:0 0 6px #fff,0 0 24px #ff2fd1,0 0 60px #ff2fd1}
+.sub{position:absolute;top:530px;left:84px;font-size:36px;font-weight:300;color:#bfe9ff;letter-spacing:3px}
+.sub b{font-weight:500;color:#33e9ff}
+.term{position:absolute;left:84px;top:610px;width:880px;padding:22px 28px;border:1px solid rgba(57,255,176,.5);background:rgba(4,20,16,.55);
+ font-family:'JetBrains Mono';font-size:22px;line-height:1.65;color:#39ffb0;box-shadow:0 0 24px rgba(57,255,176,.15) inset}
+.term .c{color:#6a7c90}
+.cursor{display:inline-block;width:13px;height:26px;background:#39ffb0;vertical-align:-5px;box-shadow:0 0 10px #39ffb0}
+.net{position:absolute;right:70px;top:90px}
+.tl{position:absolute;left:80px;right:80px;bottom:60px;height:60px;font-family:'JetBrains Mono';font-size:18px;color:#6a7c90}
+.tl .bar{position:absolute;top:26px;left:0;right:0;height:2px;background:rgba(51,233,255,.25)}
+.tl .fill{position:absolute;top:26px;left:0;width:15.5%;height:2px;background:#33e9ff;box-shadow:0 0 12px #33e9ff}
+.tl .d{position:absolute;top:19px;width:16px;height:16px;border-radius:50%;border:2px solid #33e9ff;margin-left:-8px;background:#04050b}
+.tl .d.on{background:#33e9ff;box-shadow:0 0 16px 4px #33e9ff}
+.tl .l{position:absolute;top:44px;margin-left:-24px}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px);pointer-events:none}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.75) 100%)}
+</style></head><body>
+<div class="sky"></div><div class="sun"></div><div class="floor"></div><div class="horizon"></div>
+<div class="hud">&gt; AI_HISTORY.EXE <span>//</span> CH.01 起源 <span>// REC ●</span></div>
+<div class="hudr">SIG 1956.08<br>DARTMOUTH_NH</div>
+<div class="year">1956</div>
+<div class="title">"人工智能"诞生</div>
+<div class="sub">达特茅斯夏季研讨会 · <b>Artificial Intelligence</b> 一词首次被正式提出</div>
+<div class="term">
+<span class="c">// 1955 研讨会提案 · McCarthy / Minsky / Rochester / Shannon</span><br>
+&gt; 学习的每一个方面，或智能的任何其他特征，<br>
+&nbsp;&nbsp;原则上都能被精确描述，以至于可以造一台机器来模拟它。<span class="cursor"></span>
+</div>
+<svg class="net" width="640" height="420" viewBox="0 0 640 420">
+<defs><filter id="g"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#g)" stroke="#33e9ff" stroke-width="1.6" fill="none" opacity=".85">
+<g id="edges"></g>
+</g>
+<g id="nodes" filter="url(#g)"></g>
+</svg>
+<div class="tl"><div class="bar"></div><div class="fill"></div>
+<div class="d on" style="left:0%"></div><div class="l" style="left:0%">1943</div>
+<div class="d on" style="left:15.5%"></div><div class="l" style="left:15.5%;color:#33e9ff">1956</div>
+<div class="d" style="left:38%"></div><div class="l" style="left:38%">1980s</div>
+<div class="d" style="left:65%"></div><div class="l" style="left:65%">2012</div>
+<div class="d" style="left:88%"></div><div class="l" style="left:88%">2022</div>
+<div class="d" style="left:100%"></div><div class="l" style="left:100%">2026</div>
+</div>
+<div class="scan"></div><div class="vig"></div>
+<script>
+const layers=[4,5,5,3],W=640,H=420,e=document.getElementById('edges'),n=document.getElementById('nodes');
+const pos=layers.map((c,i)=>Array.from({length:c},(_,j)=>[60+i*170,H/2+(j-(c-1)/2)*74]));
+for(let i=0;i<pos.length-1;i++)for(const a of pos[i])for(const b of pos[i+1]){const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+l.setAttribute('x1',a[0]);l.setAttribute('y1',a[1]);l.setAttribute('x2',b[0]);l.setAttribute('y2',b[1]);l.setAttribute('opacity',(0.25+Math.random()*.6).toFixed(2));e.appendChild(l)}
+pos.flat().forEach(([x,y],k)=>{const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',k%5==0?12:9);
+c.setAttribute('fill',k%5==0?'#ff5fd8':'#04050b');c.setAttribute('stroke',k%5==0?'#ff5fd8':'#33e9ff');c.setAttribute('stroke-width','3');n.appendChild(c)});
+</script>
+</body></html>

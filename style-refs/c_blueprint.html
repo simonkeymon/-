@@ -1,0 +1,87 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="fonts/c_blueprint.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;position:relative;color:#eaf3ff;font-family:'Noto Sans SC',sans-serif;
+ background-color:#0f3f86;
+ background-image:radial-gradient(ellipse at 40% 40%,rgba(255,255,255,.08),transparent 60%),
+  linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px),
+  linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+ background-size:100% 100%,120px 120px,120px 120px,24px 24px,24px 24px}
+.frame{position:absolute;inset:40px;border:3px solid #eaf3ff}
+.frame2{position:absolute;inset:52px;border:1px solid rgba(234,243,255,.6)}
+.mono{font-family:'IBM Plex Mono'}
+.tag{position:absolute;top:84px;left:96px;font-family:'IBM Plex Mono';font-size:20px;letter-spacing:3px;opacity:.85}
+.year{position:absolute;top:120px;left:92px;font-family:'IBM Plex Mono';font-weight:600;font-size:190px;line-height:1;letter-spacing:4px;color:transparent;-webkit-text-stroke:2px #eaf3ff}
+.title{position:absolute;top:320px;left:96px;font-weight:700;font-size:84px;letter-spacing:6px}
+.hand{font-family:'Ma Shan Zheng';color:#ffe27a}
+.note1{position:absolute;top:440px;left:100px;font-size:40px;transform:rotate(-2deg)}
+.draw{position:absolute;left:760px;top:110px}
+.quote{position:absolute;left:96px;top:560px;width:660px;font-size:24px;line-height:1.8;font-weight:300;border:1.5px dashed rgba(234,243,255,.7);padding:22px 26px}
+.quote .k{font-family:'IBM Plex Mono';font-size:16px;letter-spacing:2px;opacity:.7;display:block;margin-bottom:8px}
+.tb{position:absolute;right:52px;bottom:52px;width:760px;height:170px;border-top:3px solid #eaf3ff;border-left:3px solid #eaf3ff;display:grid;
+ grid-template-columns:150px 1fr 150px 140px;grid-template-rows:1fr 1fr 1fr;font-size:18px}
+.tb div{border-right:1px solid rgba(234,243,255,.7);border-bottom:1px solid rgba(234,243,255,.7);padding:8px 12px;display:flex;align-items:center}
+.tb .h{font-family:'IBM Plex Mono';font-size:14px;letter-spacing:2px;opacity:.75}
+.tb .big{font-weight:700;font-size:26px;grid-column:2/3}
+.tl{position:absolute;left:96px;width:960px;bottom:92px;height:60px;font-family:'IBM Plex Mono';font-size:17px}
+.tl .bar{position:absolute;top:14px;left:0;right:0;height:0;border-top:2px solid #eaf3ff}
+.tl .t{position:absolute;top:6px;height:18px;border-left:2px solid #eaf3ff}
+.tl .l{position:absolute;top:30px;margin-left:-22px;opacity:.8}
+.tl .on{position:absolute;top:2px;width:26px;height:26px;margin-left:-13px;border:2.5px solid #ffe27a;border-radius:50%}
+</style></head><body>
+<div class="frame"></div><div class="frame2"></div>
+<div class="tag">DWG. AI-HIST / SHEET 01 OF 12 — 起源</div>
+<div class="year">1956</div>
+<div class="title">达特茅斯会议</div>
+<div class="note1 hand">← "人工智能"这个词，从这里诞生</div>
+<div class="quote"><span class="k">SPEC. 设计说明 · 1955 PROPOSAL</span>学习的每一个方面，或智能的任何其他特征，原则上都能被精确描述，以至于可以造一台机器来模拟它。</div>
+<svg class="draw" width="1080" height="660" viewBox="0 0 1080 660" fill="none" stroke="#eaf3ff" font-family="Noto Sans SC">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eaf3ff" stroke="none"/></marker>
+<marker id="ar2" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#eaf3ff" stroke="none"/></marker></defs>
+<!-- central machine -->
+<rect x="420" y="220" width="260" height="200" stroke-width="3"/>
+<rect x="436" y="236" width="228" height="168" stroke-width="1" stroke-dasharray="6 5"/>
+<text x="550" y="312" fill="#eaf3ff" stroke="none" font-size="34" font-weight="700" text-anchor="middle">思考机器</text>
+<text x="550" y="352" fill="#eaf3ff" stroke="none" font-size="18" text-anchor="middle" font-family="IBM Plex Mono" opacity=".8">THINKING MACHINE</text>
+<!-- gears -->
+<g stroke-width="2" transform="translate(640,400)"><circle r="34"/><circle r="12"/>
+<g id="teeth"></g></g>
+<!-- modules -->
+<g stroke-width="2">
+<rect x="70" y="60" width="210" height="96"/><text x="175" y="104" fill="#eaf3ff" stroke="none" font-size="28" text-anchor="middle" font-weight="500">语言</text><text x="175" y="136" fill="#eaf3ff" stroke="none" font-size="15" text-anchor="middle" font-family="IBM Plex Mono" opacity=".75">LANGUAGE</text>
+<rect x="70" y="480" width="210" height="96"/><text x="175" y="524" fill="#eaf3ff" stroke="none" font-size="28" text-anchor="middle" font-weight="500">学习</text><text x="175" y="556" fill="#eaf3ff" stroke="none" font-size="15" text-anchor="middle" font-family="IBM Plex Mono" opacity=".75">LEARNING</text>
+<rect x="820" y="60" width="210" height="96"/><text x="925" y="104" fill="#eaf3ff" stroke="none" font-size="28" text-anchor="middle" font-weight="500">抽象</text><text x="925" y="136" fill="#eaf3ff" stroke="none" font-size="15" text-anchor="middle" font-family="IBM Plex Mono" opacity=".75">ABSTRACTION</text>
+<rect x="820" y="480" width="210" height="96"/><text x="925" y="524" fill="#eaf3ff" stroke="none" font-size="28" text-anchor="middle" font-weight="500">创造</text><text x="925" y="556" fill="#eaf3ff" stroke="none" font-size="15" text-anchor="middle" font-family="IBM Plex Mono" opacity=".75">CREATIVITY</text>
+</g>
+<g stroke-width="2" marker-end="url(#ar)">
+<path d="M280,108 L360,108 L360,250 L416,250"/><path d="M280,528 L360,528 L360,390 L416,390"/>
+<path d="M820,108 L740,108 L740,250 L684,250"/><path d="M820,528 L740,528 L740,390 L684,390"/>
+</g>
+<!-- dimension line -->
+<g stroke-width="1.2" opacity=".85"><line x1="420" y1="170" x2="420" y2="205"/><line x1="680" y1="170" x2="680" y2="205"/>
+<line x1="426" y1="186" x2="674" y2="186" marker-start="url(#ar2)" marker-end="url(#ar)"/></g>
+<text x="550" y="176" fill="#eaf3ff" stroke="none" font-size="16" text-anchor="middle" font-family="IBM Plex Mono">8 WEEKS · 10 RESEARCHERS</text>
+<!-- callout -->
+<circle cx="550" cy="220" r="0"/>
+<path d="M680,300 C740,300 760,320 790,330" stroke="#ffe27a" stroke-width="2" stroke-dasharray="4 5"/>
+<text x="800" y="330" fill="#ffe27a" stroke="none" font-size="32" font-family="Ma Shan Zheng">两个月能搞定？</text>
+<text x="800" y="368" fill="#ffe27a" stroke="none" font-size="23" font-family="Ma Shan Zheng" opacity=".85">（后来证明：要七十年）</text>
+</svg>
+<div class="tl"><div class="bar"></div>
+<div class="t" style="left:0"></div><div class="l" style="left:0">1943</div>
+<div class="on" style="left:15.5%"></div><div class="t" style="left:15.5%"></div><div class="l" style="left:15.5%;color:#ffe27a;opacity:1">1956</div>
+<div class="t" style="left:38%"></div><div class="l" style="left:38%">1980s</div>
+<div class="t" style="left:65%"></div><div class="l" style="left:65%">2012</div>
+<div class="t" style="left:88%"></div><div class="l" style="left:88%">2022</div>
+<div class="t" style="left:100%"></div><div class="l" style="left:100%">2026</div>
+</div>
+<div class="tb">
+<div class="h">项目 PROJECT</div><div class="big">人工智能简史</div><div class="h">图号 DWG</div><div class="mono">AI-1956</div>
+<div class="h">设计 BY</div><div style="grid-column:2/5">McCarthy · Minsky · Rochester · Shannon</div>
+<div class="h">地点 SITE</div><div>Dartmouth College, NH</div><div class="h">比例 SCALE</div><div class="mono">1 : 1</div>
+</div>
+<script>
+const t=document.getElementById('teeth');for(let i=0;i<12;i++){const r=document.createElementNS('http://www.w3.org/2000/svg','rect');r.setAttribute('x',-5);r.setAttribute('y',-44);r.setAttribute('width',10);r.setAttribute('height',12);r.setAttribute('transform',`rotate(${i*30})`);t.appendChild(r)}
+</script>
+</body></html>
