@@ -1,0 +1,588 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><title>AI 简史 · 蓝图</title>
+<link href="../style-refs/fonts/c_blueprint.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0f3f86}
+body{position:relative;color:#eaf3ff;font-family:'Noto Sans SC',sans-serif}
+#bg{position:absolute;inset:0;background-color:#0f3f86;
+ background-image:radial-gradient(ellipse at 40% 40%,rgba(255,255,255,.08),transparent 60%),
+  linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px),
+  linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+ background-size:100% 100%,120px 120px,120px 120px,24px 24px,24px 24px}
+svg{overflow:visible}
+svg text{fill:#eaf3ff;stroke:none;font-family:'Noto Sans SC'}
+svg .m{font-family:'IBM Plex Mono'}
+svg .hw{font-family:'Ma Shan Zheng'}
+svg text.y{fill:#ffe27a}
+svg .ys{stroke:#ffe27a}
+svg .chess{font-family:'DejaVu Sans'}
+.p,.spin{transform-box:fill-box;transform-origin:center}
+.full{position:absolute;left:0;top:0}
+.scene{position:absolute;inset:0}
+.inner{position:absolute;inset:0;transform-origin:50% 42%}
+.year{position:absolute;top:120px;left:92px;font-family:'IBM Plex Mono';font-weight:600;font-size:190px;line-height:1;letter-spacing:4px;color:transparent;-webkit-text-stroke:2px #eaf3ff}
+.title{position:absolute;top:330px;left:96px;font-weight:700;font-size:84px;letter-spacing:6px;white-space:nowrap}
+.title.sm{font-size:66px;letter-spacing:3px;top:342px}
+.note{position:absolute;top:450px;left:100px;font-family:'Ma Shan Zheng';color:#ffe27a;font-size:40px;white-space:nowrap;rotate:-2deg;padding:0 8px}
+.spec{position:absolute;left:96px;top:560px;width:660px;font-size:24px;line-height:1.8;font-weight:300;border:1.5px dashed rgba(234,243,255,.7);padding:20px 26px}
+.spec .k{font-family:'IBM Plex Mono';font-size:16px;letter-spacing:2px;opacity:.7;display:block;margin-bottom:6px}
+.art{position:absolute;left:760px;top:110px;width:1080px;height:660px}
+.art>svg{position:absolute;left:0;top:0}
+.lb{position:absolute;white-space:nowrap}
+.hand{font-family:'Ma Shan Zheng';color:#ffe27a}
+.mono{font-family:'IBM Plex Mono'}
+.center{position:absolute;left:50%;translate:-50% 0;white-space:nowrap;text-align:center}
+#hud{opacity:0}
+#tag{position:absolute;top:84px;left:96px;font-family:'IBM Plex Mono';font-size:20px;letter-spacing:3px;opacity:.85}
+#tl{position:absolute;left:96px;width:960px;bottom:92px;height:60px;font-family:'IBM Plex Mono';font-size:17px}
+#tl .bar{position:absolute;top:14px;left:0;right:0;border-top:1.5px solid rgba(234,243,255,.55)}
+#tl .fill{position:absolute;top:13px;left:0;border-top:3px solid #eaf3ff}
+#tl .t{position:absolute;top:6px;height:18px;border-left:2px solid #eaf3ff}
+#tl .l{position:absolute;top:30px;width:60px;margin-left:-30px;text-align:center;opacity:.7;font-size:15px}
+#tl .l.cur{color:#ffe27a;opacity:1}
+#tl .on{position:absolute;top:1px;width:28px;height:28px;margin-left:-14px;border:2.5px solid #ffe27a;border-radius:50%;box-shadow:0 0 12px rgba(255,226,122,.5)}
+#tb{position:absolute;right:52px;bottom:52px;width:760px;height:170px;border-top:3px solid #eaf3ff;border-left:3px solid #eaf3ff;display:grid;
+ grid-template-columns:150px 1fr 150px 140px;grid-template-rows:1fr 1fr 1fr;font-size:19px;background:rgba(15,63,134,.6)}
+#tb div{border-right:1px solid rgba(234,243,255,.7);border-bottom:1px solid rgba(234,243,255,.7);padding:8px 12px;display:flex;align-items:center;white-space:nowrap;overflow:hidden}
+#tb .h{font-family:'IBM Plex Mono';font-size:14px;letter-spacing:2px;opacity:.75}
+#tb .big{font-weight:700;font-size:26px}
+#scan{position:absolute;top:0;bottom:0;width:3px;margin-left:-1px;background:#fff;box-shadow:0 0 18px 6px rgba(170,215,255,.85);opacity:0}
+#scan::before{content:'';position:absolute;top:0;bottom:0;right:3px;width:260px;background:linear-gradient(90deg,transparent,rgba(200,230,255,.16))}
+#sub{position:absolute;left:0;right:0;top:792px;text-align:center;opacity:0}
+#sub span{display:inline-block;font-size:32px;font-weight:500;letter-spacing:2px;padding:6px 22px;background:rgba(6,26,62,.72);border-left:3px solid #ffe27a;color:#fff}
+svg .card-name{font-weight:700}
+#fade{position:absolute;inset:0;background:#030b1a;opacity:0}
+</style></head><body>
+<div id="bg"></div>
+<svg width="0" height="0" style="position:absolute"><defs>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto" style="overflow:visible"><path d="M0,0 L10,5 L0,10 z" fill="#eaf3ff"/></marker>
+<marker id="ar2" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#eaf3ff"/></marker>
+<marker id="ary" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ffe27a"/></marker>
+</defs></svg>
+<div id="global">
+<svg class="full" width="1920" height="1080" fill="none" stroke="#eaf3ff">
+<rect class="d" data-t="0.2" data-d="1.8" x="40" y="40" width="1840" height="1000" stroke-width="3"/>
+<rect class="d" data-t="0.6" data-d="1.8" x="52" y="52" width="1816" height="976" stroke-width="1" stroke-opacity=".6"/>
+</svg>
+</div>
+<!-- ===== S0 OPENING ===== -->
+<div class="scene" id="s00">
+<svg class="full" width="1920" height="1080" fill="none" stroke="#eaf3ff" stroke-width="1.2">
+<circle class="d" data-t="0.9" data-d="1.8" cx="960" cy="455" r="300" stroke-opacity=".3"/>
+<path class="d" data-t="1.1" data-d="1.4" d="M560,455 H1360 M960,110 V800" stroke-opacity=".3"/>
+<path class="d" data-t="3.0" data-d="1.0" d="M500,655 H1420" stroke-width="1.5" marker-start="url(#ar2)" marker-end="url(#ar)"/>
+<path class="d" data-t="2.9" data-d="0.5" d="M500,638 V672 M1420,638 V672" stroke-width="1.5"/>
+<text class="f m" data-t="3.4" x="960" y="642" text-anchor="middle" font-size="18" letter-spacing="4">1950 — 2026 · 76 YEARS</text>
+</svg>
+<div class="center" style="top:300px"><div class="f mono" data-t="1.4" style="font-size:20px;letter-spacing:6px">DWG. AI-HIST — MASTER SHEET</div></div>
+<div class="center" style="top:345px"><div class="f" data-t="1.8" data-d="0.9" style="font-size:150px;font-weight:700;letter-spacing:22px;padding-left:22px">人工智能简史</div></div>
+<div class="center" style="top:560px"><div class="f mono" data-t="2.5" style="font-size:26px;letter-spacing:7px;padding-left:7px">A BRIEF HISTORY OF ARTIFICIAL INTELLIGENCE</div></div>
+<div class="center" style="top:700px"><span class="w hand" data-t="4.2" data-d="1.8" style="display:inline-block;font-size:50px;padding:0 10px">15 张图纸，国内外 AI 的诞生史。</span></div>
+</div>
+<!-- ===== S1 1950 TURING ===== -->
+<div class="scene" id="s01" data-sheet="01" data-chap="提问" data-tick="0" data-dwg="AI-1950" data-by="Alan Turing" data-site="Manchester, UK">
+<div class="year f" data-t="0.3">1950</div>
+<div class="title f" data-t="0.6">机器能思考吗？</div>
+<div class="note w" data-t="1.3">← 图灵的“模仿游戏”</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. 1950 · 《计算机器与智能》</span>图灵提出：如果一台机器在文字对话中，让人分辨不出它是机器，我们就应当承认它在“思考”。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<g data-g="0.8,0.15">
+<circle class="d" cx="150" cy="255" r="34"/>
+<path class="d" d="M88,400 V352 Q150,296 212,352 V400"/>
+<path class="d" d="M40,400 H330"/>
+<path class="d" d="M60,400 V470 M310,400 V470"/>
+<rect class="d" x="228" y="316" width="84" height="62"/>
+<path class="d" d="M270,378 V400"/>
+</g>
+<text class="f" data-t="1.9" x="185" y="512" text-anchor="middle" font-size="26">提问者 C</text>
+<text class="f m" data-t="2.0" x="185" y="540" text-anchor="middle" font-size="15" fill-opacity=".75">INTERROGATOR</text>
+<rect class="d" data-t="1.6" x="440" y="110" width="26" height="220"/>
+<rect class="d" data-t="1.7" x="440" y="370" width="26" height="200"/>
+<path class="d" data-t="2.1" data-d="1.2" data-hatch="440,110,26,220,18" stroke-width="1" stroke-opacity=".7"/>
+<path class="d" data-t="2.2" data-d="1.2" data-hatch="440,370,26,200,18" stroke-width="1" stroke-opacity=".7"/>
+<text class="f" data-t="2.4" x="453" y="92" text-anchor="middle" font-size="20">墙 · 只能打字交流</text>
+<rect class="d" data-t="2.4" x="620" y="90" width="400" height="200"/>
+<rect class="d" data-t="2.6" x="620" y="370" width="400" height="200"/>
+<text class="f m" data-t="2.9" x="642" y="132" font-size="32" font-weight="600">A</text>
+<text class="f m" data-t="3.0" x="642" y="412" font-size="32" font-weight="600">B</text>
+<path class="d" id="s1a" data-t="3.4" d="M312,340 H540 V190 H614" marker-end="url(#ar)"/>
+<path class="d" id="s1b" data-t="3.6" d="M312,356 H540 V470 H614" marker-end="url(#ar)"/>
+<circle class="flow" data-path="s1a" data-t="4.6" data-period="1.8" r="6" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s1b" data-t="5.5" data-period="1.8" r="6" fill="#ffe27a" stroke="none"/>
+<text class="f" data-t="3.2" data-out="7.2" x="820" y="222" text-anchor="middle" font-size="96" font-weight="700">?</text>
+<text class="f" data-t="3.3" data-out="7.2" x="820" y="502" text-anchor="middle" font-size="96" font-weight="700">?</text>
+<g data-g="7.6,0.12">
+<circle class="d" cx="820" cy="170" r="30"/>
+<path class="d" d="M762,272 V244 Q820,196 878,244 V272"/>
+<rect class="d" x="768" y="408" width="104" height="72"/>
+<path class="d" d="M820,480 V502 M784,504 H856"/>
+</g>
+<rect class="blink" data-t="8.3" x="786" y="424" width="12" height="22" fill="#eaf3ff" stroke="none"/>
+<text class="f" data-t="8.4" x="930" y="180" font-size="24">人类</text>
+<text class="f" data-t="8.5" x="930" y="460" font-size="24">机器</text>
+</svg>
+<div class="lb hand w" data-t="4.4" style="left:630px;top:588px;font-size:36px">A 和 B，谁是机器？</div>
+</div>
+</div>
+<!-- ===== S2 1956 DARTMOUTH ===== -->
+<div class="scene" id="s02" data-sheet="02" data-chap="命名" data-tick="1" data-dwg="AI-1956" data-by="McCarthy · Minsky · Rochester · Shannon" data-site="Dartmouth College, NH">
+<div class="year f" data-t="0.3">1956</div>
+<div class="title f" data-t="0.6">达特茅斯会议</div>
+<div class="note w" data-t="1.3">← “人工智能”这个词，从这里诞生</div>
+<div class="spec f" data-t="2.0"><span class="k">SPEC. 设计说明 · 1955 研讨会提案</span>“学习的每一个方面，或智能的任何其他特征，原则上都能被精确描述，以至于可以造一台机器来模拟它。”</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="420" y="220" width="260" height="200" stroke-width="3"/>
+<rect class="d" data-t="1.0" x="436" y="236" width="228" height="168" stroke-width="1" stroke-opacity=".7"/>
+<text class="f" data-t="1.3" x="550" y="312" text-anchor="middle" font-size="34" font-weight="700">思考机器</text>
+<text class="f m" data-t="1.4" x="550" y="350" text-anchor="middle" font-size="17" fill-opacity=".8">THINKING MACHINE</text>
+<g class="spin" data-t="2.8"><g transform="translate(640,400)" class="gear"></g></g>
+<rect class="d" data-t="1.5" x="70" y="60" width="210" height="96"/><text class="f" data-t="1.8" x="175" y="104" text-anchor="middle" font-size="28" font-weight="500">语言</text><text class="f m" data-t="1.9" x="175" y="136" text-anchor="middle" font-size="15" fill-opacity=".75">LANGUAGE</text>
+<rect class="d" data-t="1.7" x="820" y="60" width="210" height="96"/><text class="f" data-t="2.0" x="925" y="104" text-anchor="middle" font-size="28" font-weight="500">抽象</text><text class="f m" data-t="2.1" x="925" y="136" text-anchor="middle" font-size="15" fill-opacity=".75">ABSTRACTION</text>
+<rect class="d" data-t="1.9" x="70" y="480" width="210" height="96"/><text class="f" data-t="2.2" x="175" y="524" text-anchor="middle" font-size="28" font-weight="500">学习</text><text class="f m" data-t="2.3" x="175" y="556" text-anchor="middle" font-size="15" fill-opacity=".75">LEARNING</text>
+<rect class="d" data-t="2.1" x="820" y="480" width="210" height="96"/><text class="f" data-t="2.4" x="925" y="524" text-anchor="middle" font-size="28" font-weight="500">创造</text><text class="f m" data-t="2.5" x="925" y="556" text-anchor="middle" font-size="15" fill-opacity=".75">CREATIVITY</text>
+<g data-g="2.6,0.15">
+<path class="d" id="s2a" d="M280,108 H360 V250 H416" marker-end="url(#ar)"/>
+<path class="d" id="s2b" d="M820,108 H740 V250 H684" marker-end="url(#ar)"/>
+<path class="d" id="s2c" d="M280,528 H360 V390 H416" marker-end="url(#ar)"/>
+<path class="d" id="s2d" d="M820,528 H740 V390 H684" marker-end="url(#ar)"/>
+</g>
+<circle class="flow" data-path="s2a" data-t="4.2" data-period="2" r="5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s2b" data-t="4.7" data-period="2" r="5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s2c" data-t="5.2" data-period="2" r="5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s2d" data-t="5.7" data-period="2" r="5" fill="#ffe27a" stroke="none"/>
+<path class="d" data-t="3.4" data-d="0.4" d="M420,168 V206 M680,168 V206" stroke-width="1.2"/>
+<path class="d" data-t="3.6" d="M426,186 H674" stroke-width="1.2" marker-start="url(#ar2)" marker-end="url(#ar)"/>
+<text class="f m" data-t="3.9" x="550" y="176" text-anchor="middle" font-size="15">2-MONTH, 10-MAN STUDY</text>
+<path class="d ys" data-t="4.4" data-d="0.7" d="M680,300 C730,300 750,318 786,326" stroke-width="2"/>
+</svg>
+<div class="lb hand w" data-t="4.9" style="left:792px;top:296px;font-size:34px">两个月能搞定？</div>
+<div class="lb hand w" data-t="6.4" style="left:796px;top:346px;font-size:22px">（原话：两个月，十个人）</div>
+</div>
+</div>
+<!-- ===== S03 1958-1966 PERCEPTRON + ELIZA ===== -->
+<div class="scene" id="s03" data-sheet="03" data-chap="学习与对话" data-tick="2" data-dwg="AI-1960s" data-by="Frank Rosenblatt · Joseph Weizenbaum" data-site="Cornell · MIT, USA">
+<div class="year f" data-t="0.3">1960s</div>
+<div class="title sm f" data-t="0.6">会学习，也会聊天</div>
+<div class="note w" data-t="1.3">← 感知机与 ELIZA</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. PERCEPTRON 1958 · ELIZA 1966</span>感知机模仿神经元，答错就调整权重；ELIZA 只会套用句式来“对话”，却让许多人对它倾诉心事。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<g data-g="0.8,0.1"><circle class="d" cx="50" cy="110" r="24"/><circle class="d" cx="50" cy="200" r="24"/><circle class="d" cx="50" cy="290" r="24"/></g>
+<g data-g="1.0,0.08"><text class="f m" x="50" y="118" text-anchor="middle" font-size="20">x₁</text><text class="f m" x="50" y="208" text-anchor="middle" font-size="20">x₂</text><text class="f m" x="50" y="298" text-anchor="middle" font-size="20">x₃</text></g>
+<g data-g="1.3,0.12">
+<path class="d" id="s03l1" d="M71.6,120.4 L218.6,180" stroke-width="3.5"/>
+<path class="d" id="s03l2" d="M74,200 L214,200" stroke-width="1.8"/>
+<path class="d" id="s03l3" d="M71.6,279.6 L218.6,220" stroke-width="2.6"/>
+</g>
+<circle class="d" data-t="1.8" cx="260" cy="200" r="46" stroke-width="3"/>
+<text class="f" data-t="2.1" x="260" y="216" text-anchor="middle" font-size="46">Σ</text>
+<path class="d" data-t="2.2" d="M306,200 H326" marker-end="url(#ar)"/>
+<rect class="d" data-t="2.3" x="330" y="160" width="90" height="80"/>
+<path class="d" data-t="2.6" d="M342,228 H372 V176 H410" stroke-width="3"/>
+<path class="d" data-t="2.7" d="M420,200 H452" marker-end="url(#ar)"/>
+<circle class="d" data-t="2.9" cx="478" cy="200" r="22" stroke-width="2.5"/>
+<text class="f m" data-t="3.0" x="478" y="208" text-anchor="middle" font-size="22">y</text>
+<circle class="flow" data-path="s03l1" data-t="3.2" data-period="1.4" r="4.5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s03l2" data-t="3.4" data-period="1.4" r="4.5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s03l3" data-t="3.6" data-period="1.4" r="4.5" fill="#ffe27a" stroke="none"/>
+<path class="d ys" data-t="3.4" data-d="1.0" d="M478,222 V330 H150 V262" stroke-width="2.2" marker-end="url(#ary)"/>
+<text class="f" data-t="3.0" x="250" y="410" text-anchor="middle" font-size="24" font-weight="500">感知机 · 1958</text>
+<text class="f m" data-t="3.1" x="250" y="438" text-anchor="middle" font-size="14" fill-opacity=".75">MARK I PERCEPTRON</text>
+<rect class="d" data-t="4.0" x="560" y="40" width="500" height="380" rx="10" stroke-width="2.5"/>
+<path class="d" data-t="4.3" d="M560,80 H1060"/>
+<text class="f m" data-t="4.4" x="810" y="66" text-anchor="middle" font-size="16" fill-opacity=".85">ELIZA — MIT, 1966</text>
+<rect class="blink" data-t="9.0" x="586" y="312" width="12" height="24" fill="#eaf3ff" stroke="none"/>
+</svg>
+<div class="lb ty mono" data-t="4.8" data-d="0.8" style="left:586px;top:104px;font-size:22px">&gt; 我最近很难过。</div>
+<div class="lb ty mono" data-t="5.8" data-d="1.0" style="left:586px;top:154px;font-size:22px;color:#ffe27a">ELIZA：你为什么觉得难过？</div>
+<div class="lb ty mono" data-t="7.0" data-d="0.9" style="left:586px;top:204px;font-size:22px">&gt; 我和家人吵架了。</div>
+<div class="lb ty mono" data-t="8.1" data-d="1.0" style="left:586px;top:254px;font-size:22px;color:#ffe27a">ELIZA：跟我说说你的家人。</div>
+<div class="lb hand w" data-t="3.8" style="left:150px;top:340px;font-size:24px">答错就调权重</div>
+<div class="lb hand w" data-t="9.4" style="left:560px;top:438px;font-size:30px">只会套句式，却有人向它倾诉心事</div>
+</div>
+</div>
+<!-- ===== S04 1974-1987 TWO WINTERS ===== -->
+<div class="scene" id="s04" data-sheet="04" data-chap="寒冬" data-tick="3" data-dwg="AI-1974" data-by="Minsky &amp; Papert · Lighthill · Feigenbaum" data-site="USA · UK">
+<div class="year f" data-t="0.3">1974</div>
+<div class="title f" data-t="0.6">两次寒冬</div>
+<div class="note w" data-t="1.3">← 期望跑在了能力前面</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. 1974 · 1987</span>单层网络的局限与《莱特希尔报告》让经费冻结；八十年代的专家系统热潮，也在 1987 年崩塌。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<path class="d" data-t="0.7" d="M60,480 V60" marker-end="url(#ar)"/>
+<path class="d" data-t="0.8" d="M60,480 H1060" marker-end="url(#ar)"/>
+<text class="f" data-t="1.0" x="74" y="76" font-size="18">期望 / 经费</text>
+<g data-g="1.0,0.08">
+<text class="f m" x="60" y="508" text-anchor="middle" font-size="15">1956</text><text class="f m" x="250" y="508" text-anchor="middle" font-size="15">1965</text>
+<text class="f m" x="455" y="508" text-anchor="middle" font-size="15">1974</text><text class="f m" x="590" y="508" text-anchor="middle" font-size="15">1980</text>
+<text class="f m" x="815" y="508" text-anchor="middle" font-size="15">1987</text><text class="f m" x="1030" y="508" text-anchor="middle" font-size="15">1993</text>
+</g>
+<path class="d" data-t="1.6" data-d="8.0" d="M60,440 C200,420 270,160 350,130 S420,200 450,400 L480,420 C560,410 640,230 715,175 S790,230 805,410 L840,430 H1040" stroke-width="3.5"/>
+<path class="d" data-t="2.0" data-d="3.0" d="M60,462 C400,448 700,428 1040,392" stroke-width="1.5" stroke-opacity=".7"/>
+<text class="f" data-t="4.6" x="900" y="386" font-size="17" fill-opacity=".85">实际能力</text>
+<g data-g="3.4,0.25">
+<path class="d" data-snow="520,250,22" stroke-width="1.5"/><path class="d" data-snow="462,206,12" stroke-width="1.2"/>
+</g>
+<g data-g="10.2,0.25">
+<path class="d" data-snow="880,250,22" stroke-width="1.5"/><path class="d" data-snow="938,206,12" stroke-width="1.2"/>
+</g>
+<rect class="d" data-t="7.0" x="580" y="58" width="250" height="84"/>
+<text class="f m" data-t="7.3" x="596" y="92" font-size="18">IF 发烧 AND 咳嗽</text>
+<text class="f m" data-t="7.5" x="596" y="124" font-size="18">THEN 流感</text>
+<path class="d" data-t="7.6" d="M705,142 L713,168" stroke-width="1.2"/>
+<text class="f" data-t="7.6" x="846" y="94" font-size="22" font-weight="500">专家系统</text>
+<text class="f m" data-t="7.7" x="846" y="118" font-size="13" fill-opacity=".75">EXPERT SYSTEMS</text>
+</svg>
+<div class="lb hand w" data-t="2.4" style="left:70px;top:14px;font-size:22px">“二十年内，机器将能做人能做的任何工作。”—— 西蒙，1965</div>
+<div class="lb hand w" data-t="3.6" style="left:476px;top:330px;font-size:30px">第一次寒冬</div>
+<div class="lb hand w" data-t="10.6" style="left:836px;top:330px;font-size:30px">第二次寒冬</div>
+</div>
+</div>
+<!-- ===== S05 1977 WU'S METHOD ===== -->
+<div class="scene" id="s05" data-sheet="05" data-chap="中国起步" data-tick="4" data-dwg="AI-1977" data-by="吴文俊 · 中国人工智能学会" data-site="北京 · 长沙">
+<div class="year f" data-t="0.3">1977</div>
+<div class="title f" data-t="0.6">机器证明</div>
+<div class="note w" data-t="1.3">← 中国 AI 的起点之一：“吴方法”</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. 吴文俊 1977 · CAAI 1981</span>把几何定理转化为代数方程，让计算机自动证明，国际上称为“吴方法”。1981 年，中国人工智能学会成立。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<path class="d" data-t="0.8" data-d="1.2" d="M100,420 L460,420 L250,90 Z" stroke-width="2.5"/>
+<g data-g="1.8,0.25" stroke-width="1.3" stroke-opacity=".85">
+<path class="d" d="M100,420 L355,255"/><path class="d" d="M460,420 L175,255"/><path class="d" d="M250,90 L280,420"/>
+</g>
+<circle class="p" data-t="2.8" cx="270" cy="310" r="7" fill="#ffe27a" stroke="none"/>
+<g data-g="1.2,0.1">
+<text class="f m" x="80" y="446" font-size="22">A</text><text class="f m" x="466" y="446" font-size="22">B</text><text class="f m" x="242" y="78" font-size="22">C</text>
+<text class="f m" x="362" y="252" font-size="18" fill-opacity=".8">D</text><text class="f m" x="150" y="252" font-size="18" fill-opacity=".8">E</text><text class="f m" x="272" y="446" font-size="18" fill-opacity=".8">F</text>
+</g>
+<text class="f m y" data-t="3.0" x="284" y="304" font-size="20">G</text>
+<text class="f" data-t="3.1" x="280" y="490" text-anchor="middle" font-size="20">三角形三条中线交于一点</text>
+<path class="d" data-t="3.4" d="M500,260 H600" stroke-width="2.5" marker-end="url(#ar)"/>
+<text class="f" data-t="3.6" x="550" y="244" text-anchor="middle" font-size="18">坐标化</text>
+<text class="f m" data-t="3.7" x="550" y="288" text-anchor="middle" font-size="12" fill-opacity=".75">ALGEBRAIZE</text>
+<rect class="d" data-t="3.8" x="620" y="110" width="440" height="300"/>
+<g data-g="4.3,0.45">
+<text class="f m" x="646" y="160" font-size="24">h₁(u, x) = 0</text>
+<text class="f m" x="646" y="204" font-size="24">h₂(u, x) = 0</text>
+<text class="f m" x="646" y="244" font-size="24">   ⋮</text>
+<text class="f m" x="646" y="290" font-size="24">g(u, x) = 0 ？</text>
+<text class="f" x="646" y="344" font-size="22">特征列消元 → 余式 R = 0</text>
+</g>
+<g stroke="#ffe27a" stroke-width="2.5">
+<circle class="d" data-t="8.0" cx="960" cy="540" r="62"/>
+<circle class="d" data-t="8.2" cx="960" cy="540" r="52" stroke-width="1.2"/>
+</g>
+<text class="f m y" data-t="8.5" x="960" y="532" text-anchor="middle" font-size="30" font-weight="600">1981</text>
+<text class="f y" data-t="8.6" x="960" y="562" text-anchor="middle" font-size="12">中国人工智能学会</text>
+</svg>
+<div class="lb hand w" data-t="6.8" style="left:640px;top:424px;font-size:34px">∴ 定理成立</div>
+</div>
+</div>
+<!-- ===== S6 1997 DEEP BLUE ===== -->
+<div class="scene" id="s06" data-sheet="06" data-chap="搜索" data-tick="5" data-dwg="AI-1997" data-by="IBM · 许峰雄 等" data-site="New York, USA">
+<div class="year f" data-t="0.3">1997</div>
+<div class="title sm f" data-t="0.6">深蓝胜卡斯帕罗夫</div>
+<div class="note w" data-t="1.3">← 暴力搜索的胜利</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. IBM DEEP BLUE</span>每秒评估约 2 亿个棋局，以 3.5 : 2.5 击败世界冠军卡斯帕罗夫。与此同时，1986 年的反向传播算法，正悄悄为神经网络积蓄力量。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="40" y="100" width="400" height="400" stroke-width="3"/>
+<path class="d" data-t="1.0" data-d="1.0" d="M90,100 V500 M140,100 V500 M190,100 V500 M240,100 V500 M290,100 V500 M340,100 V500 M390,100 V500 M40,150 H440 M40,200 H440 M40,250 H440 M40,300 H440 M40,350 H440 M40,400 H440 M40,450 H440" stroke-width="1"/>
+<g class="squares"></g>
+<g class="pieces"></g>
+<path class="d" data-t="2.2" d="M440,300 H472"/>
+<g class="tree"></g>
+<text class="f m c" data-t="4.2" data-d="3.2" data-to="200000000" x="480" y="612" font-size="50" font-weight="600">0</text>
+<text class="f" data-t="4.4" x="482" y="648" font-size="18">个局面 / 秒</text>
+</svg>
+<div class="lb hand w" data-t="6.4" style="left:40px;top:516px;font-size:52px">3.5 : 2.5</div>
+<div class="lb f mono" data-t="7.0" style="left:44px;top:590px;font-size:16px;letter-spacing:2px;opacity:.8">DEEP BLUE vs KASPAROV · 1997.05</div>
+</div>
+</div>
+<!-- ===== S07 2011 VOICE ASSISTANTS ===== -->
+<div class="scene" id="s07" data-sheet="07" data-chap="助手" data-tick="6" data-dwg="AI-2011" data-by="Apple · 微软 · Amazon · 科大讯飞" data-site="美国 · 中国">
+<div class="year f" data-t="0.3">2011</div>
+<div class="title f" data-t="0.6">AI 住进手机</div>
+<div class="note w" data-t="1.3">← 会听、会说的助手们</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. VOICE ASSISTANTS</span>2011 年苹果推出 Siri；2014 年微软小冰在中国诞生，同年亚马逊推出 Alexa；科大讯飞则深耕中文语音多年。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="60" y="40" width="250" height="500" rx="32" stroke-width="3"/>
+<rect class="d" data-t="1.0" x="78" y="90" width="214" height="390" rx="6" stroke-width="1.2"/>
+<path class="d" data-t="1.2" d="M160,64 H210"/>
+<circle class="d" data-t="1.3" cx="185" cy="512" r="14"/>
+<rect class="d" data-t="1.8" x="100" y="130" width="170" height="54" rx="14"/>
+<rect class="d" data-t="3.0" x="100" y="206" width="176" height="82" rx="14" stroke="#ffe27a"/>
+<g data-g="1.6,0.15" stroke-width="2">
+<rect class="d" x="170" y="360" width="30" height="56" rx="15"/><path class="d" d="M158,400 Q158,440 185,440 Q212,440 212,400 M185,440 V458 M168,458 H202"/>
+</g>
+<g data-g="2.2,0.18" stroke="#ffe27a" stroke-width="2.5">
+<path class="d" d="M330,250 Q344,290 330,330"/><path class="d" d="M352,232 Q374,290 352,348"/><path class="d" d="M374,214 Q404,290 374,366"/>
+</g>
+<g class="births" data-layout="440,40,290,150,2,330,190" data-t0="2.4" data-dt="1.4"
+ data-cards='[{"d":"2011.10","n":"Siri","o":"Apple","c":"US","t":1.8},{"d":"2014.05","n":"小冰","o":"微软（中国）","c":"CN","t":5.2},{"d":"2014.11","n":"Alexa","o":"Amazon","c":"US","t":8.0},{"d":"2010.10","n":"讯飞语音云","o":"科大讯飞","c":"CN","t":10.2}]'></g>
+</svg>
+<div class="lb hand w" data-t="11.4" style="left:440px;top:420px;font-size:32px">从此，我们开始和机器说话</div>
+<div class="lb ty" data-t="2.0" data-d="0.8" style="left:114px;top:144px;font-size:19px">今天天气怎么样？</div>
+<div class="lb ty" data-t="3.3" data-d="1.0" style="left:114px;top:218px;width:150px;white-space:normal;font-size:19px;line-height:1.5;color:#ffe27a">晴，最高 26 度，适合出门。</div>
+</div>
+</div>
+<!-- ===== S7 2012 DEEP LEARNING ===== -->
+<div class="scene" id="s08" data-sheet="08" data-chap="深度" data-tick="7" data-dwg="AI-2012" data-by="Krizhevsky · Sutskever · Hinton · 百度 · 旷视 · 商汤" data-site="Toronto · 北京 · 香港">
+<div class="year f" data-t="0.3">2012</div>
+<div class="title f" data-t="0.6">深度学习爆发</div>
+<div class="note w" data-t="1.3">← 更深的网络 + GPU + 海量数据</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. ALEXNET · 百度 IDL · 旷视 · 商汤</span>AlexNet 在 ImageNet 挑战赛中把错误率降到 15.3%，远低于第二名的 26.2%。随后百度成立深度学习研究院，旷视、商汤相继崛起。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="20" y="160" width="180" height="180"/>
+<g data-g="1.0,0.12" stroke-width="2.2">
+<path class="d" d="M62,300 C56,244 72,218 110,218 C148,218 164,244 158,300 C140,318 80,318 62,300"/>
+<path class="d" d="M70,240 L64,192 L94,222 M126,222 L156,192 L150,240"/>
+<circle class="d" cx="92" cy="262" r="6"/><circle class="d" cx="128" cy="262" r="6"/>
+<path class="d" d="M104,280 L110,287 L116,280"/>
+<path class="d" d="M58,284 L96,289 M58,298 L96,294 M162,284 L124,289 M162,298 L124,294" stroke-width="1.2"/>
+</g>
+<text class="f m" data-t="1.6" x="110" y="366" text-anchor="middle" font-size="15">INPUT 224×224</text>
+<path class="d" data-t="1.8" d="M200,250 H236" marker-end="url(#ar)"/>
+<g class="boxes"></g>
+<text class="f" data-t="3.0" x="430" y="420" text-anchor="middle" font-size="18">卷积层 × 5</text>
+<g class="dense"></g>
+<text class="f" data-t="3.8" x="700" y="362" text-anchor="middle" font-size="16">全连接层 × 3</text>
+<path class="d" data-t="4.0" d="M745,250 H800" marker-end="url(#ar)"/>
+<g data-g="4.2,0.15">
+<text class="f" x="810" y="208" font-size="22">猫</text><text class="f" x="810" y="263" font-size="22">狗</text><text class="f" x="810" y="318" font-size="22">狐狸</text>
+</g>
+<rect class="d" data-t="4.5" data-d="0.8" x="870" y="188" width="147" height="24" stroke="#ffe27a" fill="#ffe27a" fill-opacity=".25"/>
+<rect class="d" data-t="4.7" x="870" y="243" width="8" height="24"/>
+<rect class="d" data-t="4.8" x="870" y="298" width="4" height="24"/>
+<text class="f m y" data-t="5.2" x="1024" y="208" font-size="18">0.92</text>
+<text class="f m" data-t="5.3" x="888" y="263" font-size="18">0.05</text>
+<text class="f m" data-t="5.4" x="884" y="318" font-size="18">0.02</text>
+<text class="f m" data-t="5.8" x="240" y="478" font-size="16" fill-opacity=".8">IMAGENET 2012 · 前五错误率</text>
+<rect class="d" data-t="6.0" data-d="1.2" x="240" y="495" width="419" height="44"/>
+<rect class="d" data-t="6.6" data-d="1.0" x="240" y="555" width="245" height="44" stroke="#ffe27a" fill="#ffe27a" fill-opacity=".15" stroke-width="2.5"/>
+<text class="f" data-t="6.4" x="254" y="525" font-size="20">第二名</text>
+<text class="f" data-t="7.0" x="254" y="585" font-size="20">AlexNet</text>
+<text class="f m" data-t="7.2" x="672" y="527" font-size="26">26.2%</text>
+<text class="f m y" data-t="7.6" x="498" y="587" font-size="26" font-weight="600">15.3%</text>
+<g data-g="7.8,0.2">
+<rect class="d" x="40" y="470" width="140" height="110"/>
+<rect class="d" x="64" y="494" width="92" height="62" stroke-width="1.2"/>
+<path class="d" d="M52,470 V454 M72,470 V454 M92,470 V454 M112,470 V454 M132,470 V454 M152,470 V454 M168,470 V454 M52,580 V596 M72,580 V596 M92,580 V596 M112,580 V596 M132,580 V596 M152,580 V596 M168,580 V596" stroke-width="1.5"/>
+</g>
+<text class="f m" data-t="8.4" x="110" y="532" text-anchor="middle" font-size="18">GPU ×2</text>
+<text class="f" data-t="4.9" x="780" y="430" font-size="18" font-weight="500">国内</text>
+<g class="births" data-layout="780,446,280,52,1,0,62" data-t0="0" data-dt="0"
+ data-cards='[{"d":"2013.01","n":"百度 IDL","c":"CN","t":5.2},{"d":"2011","n":"旷视科技","c":"CN","t":8.1},{"d":"2014","n":"商汤科技","c":"CN","t":8.7}]'></g>
+</svg>
+</div>
+</div>
+<!-- ===== S8 2016 ALPHAGO ===== -->
+<div class="scene" id="s09" data-sheet="09" data-chap="直觉" data-tick="8" data-dwg="AI-2016" data-by="DeepMind" data-site="首尔 · 乌镇">
+<div class="year f" data-t="0.3">2016</div>
+<div class="title sm f" data-t="0.6">AlphaGo 登顶围棋</div>
+<div class="note w" data-t="1.3">← 第 37 手，没人看得懂</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. DEEPMIND ALPHAGO</span>深度神经网络 + 强化学习 + 蒙特卡洛树搜索。2016 年 4 : 1 胜李世石，2017 年在乌镇 3 : 0 胜世界排名第一的柯洁。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="40" y="50" width="540" height="540" stroke-width="3"/>
+<g class="goboard"></g>
+<g class="stones"></g>
+<text class="f m" data-t="2.2" x="650" y="150" font-size="110" font-weight="600">4 : 1</text>
+<text class="f" data-t="2.5" x="684" y="190" text-anchor="middle" font-size="20">AlphaGo</text>
+<text class="f" data-t="2.6" x="934" y="190" text-anchor="middle" font-size="20">李世石</text>
+<text class="f m y" data-t="5.6" x="650" y="520" font-size="50" font-weight="600">2017 · 3 : 0</text>
+<text class="f" data-t="6.0" x="652" y="558" font-size="19">AlphaGo vs 柯洁（世界第一）· 乌镇</text>
+</svg>
+<div class="lb hand w" data-t="3.4" style="left:640px;top:268px;font-size:42px">第 37 手</div>
+<div class="lb hand w" data-t="4.0" style="left:640px;top:326px;font-size:28px">“这不是人类会下的一手。”</div>
+<div class="lb f" data-t="4.6" style="left:644px;top:376px;font-size:17px">—— 樊麾，欧洲围棋冠军</div>
+</div>
+</div>
+<!-- ===== S9 2017 TRANSFORMER ===== -->
+<div class="scene" id="s10" data-sheet="10" data-chap="注意力" data-tick="9" data-dwg="AI-2017" data-by="Vaswani 等 8 位作者" data-site="Google">
+<div class="year f" data-t="0.3">2017</div>
+<div class="title f" data-t="0.6">注意力就是一切</div>
+<div class="note w" data-t="1.3">← Transformer 架构诞生</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. “ATTENTION IS ALL YOU NEED”</span>谷歌提出 Transformer，让每个词同时“关注”句中所有词。次年 GPT、BERT 诞生，大模型的地基铺好了。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<g class="tokens"></g>
+<g class="arcs"></g>
+<path class="d" data-t="6.6" d="M540,396 V462" marker-end="url(#ar)"/>
+<rect class="d" data-t="6.8" x="330" y="466" width="420" height="56"/>
+<text class="f" data-t="7.1" x="540" y="502" text-anchor="middle" font-size="22">多头注意力 · MULTI-HEAD ATTENTION</text>
+<path class="d" data-t="7.3" d="M540,522 V548" marker-end="url(#ar)"/>
+<rect class="d" data-t="7.4" x="330" y="552" width="420" height="56"/>
+<text class="f" data-t="7.7" x="540" y="588" text-anchor="middle" font-size="22">前馈网络 · FEED FORWARD</text>
+<path class="d" data-t="8.0" d="M770,466 Q790,466 790,486 V517 Q790,537 806,537 Q790,537 790,557 V588 Q790,608 770,608"/>
+<text class="f m" data-t="8.3" x="818" y="546" font-size="28">× N</text>
+<g class="births" data-layout="880,466,180,66,1,0,86" data-t0="0" data-dt="0" data-cards='[{"d":"2018.06","n":"GPT","o":"","c":"US","t":5.4},{"d":"2018.10","n":"BERT","o":"","c":"US","t":6.2}]'></g>
+<text class="f m" data-t="8.4" x="330" y="640" font-size="15" fill-opacity=".75">TRANSFORMER BLOCK</text>
+</svg>
+<div class="lb hand w" data-t="1.8" style="left:730px;top:36px;font-size:36px">“它”指的是谁？</div>
+<div class="lb hand w" data-t="5.6" style="left:730px;top:90px;font-size:30px">注意力给出答案：猫</div>
+</div>
+</div>
+<!-- ===== S11 2022 GENERATIVE AI ===== -->
+<div class="scene" id="s11" data-sheet="11" data-chap="生成" data-tick="10" data-dwg="AI-2022" data-by="OpenAI · Midjourney · Stability AI · 百度" data-site="San Francisco · London · 北京">
+<div class="year f" data-t="0.3">2022</div>
+<div class="title f" data-t="0.6">生成式 AI 元年</div>
+<div class="note w" data-t="1.3">← AI 走进每个人的生活</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. 2022 · GENERATIVE AI</span>文生图模型相继问世，一句话就能作画。11 月 30 日 ChatGPT 上线，约两个月用户破亿。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="20" y="30" width="580" height="540" rx="14" stroke-width="2.5"/>
+<path class="d" data-t="1.0" d="M20,80 H600"/>
+<g data-g="1.1,0.08"><circle class="d" cx="50" cy="55" r="7"/><circle class="d" cx="75" cy="55" r="7"/><circle class="d" cx="100" cy="55" r="7"/></g>
+<text class="f m" data-t="1.2" x="310" y="61" text-anchor="middle" font-size="17" fill-opacity=".8">ChatGPT</text>
+<rect class="d" data-t="1.5" x="250" y="110" width="330" height="60" rx="16"/>
+<rect class="d" data-t="2.8" x="40" y="200" width="500" height="190" rx="16"/>
+<rect class="d" data-t="1.3" x="40" y="500" width="540" height="50" rx="25"/>
+<g class="births" data-layout="640,30,420,104,1,0,122" data-t0="3.2" data-dt="0.9"
+ data-cards='[{"d":"2022.07","n":"Midjourney","o":"Midjourney","c":"US"},{"d":"2022.08","n":"Stable Diffusion","o":"Stability AI","c":"UK"},{"d":"2022.08","n":"文心一格","o":"百度","c":"CN"},{"d":"2022.11.30","n":"ChatGPT","o":"OpenAI","c":"US","hl":1,"t":6.0}]'></g>
+<text class="f m c" data-t="6.8" data-d="2.2" data-to="100000000" x="640" y="560" font-size="40" font-weight="600">0</text>
+<text class="f" data-t="7.0" x="642" y="592" font-size="17">ChatGPT 约两个月的用户数</text>
+</svg>
+<div class="lb ty" data-t="1.9" data-d="0.9" style="left:270px;top:122px;font-size:24px">给我讲讲人工智能的历史</div>
+<div class="lb ty" data-t="3.0" data-d="3.6" style="left:62px;top:218px;width:456px;white-space:normal;font-size:24px;line-height:1.7">好的！故事要从 1950 年说起。那一年，图灵提出了一个问题：“机器能思考吗？”六年后，在达特茅斯的一个夏天……</div>
+<div class="lb ty" data-t="7.6" data-d="1.0" style="left:68px;top:510px;font-size:22px">再画一张蓝图风格的海报</div>
+</div>
+</div>
+<!-- ===== S12 2023 HUNDRED-MODEL WAR ===== -->
+<div class="scene" id="s12" data-sheet="12" data-chap="百模大战" data-tick="11" data-dwg="AI-2023" data-by="国内外各大模型团队" data-site="中国 · 美国">
+<div class="year f" data-t="0.3">2023</div>
+<div class="title f" data-t="0.6">百模大战</div>
+<div class="note w" data-t="1.3">← 国内外大模型集中诞生</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. 2023 · FOUNDATION MODELS</span>国外 GPT-4、Claude、Gemini、Llama 相继登场；国内文心一言、通义千问、讯飞星火、ChatGLM、豆包、Kimi、混元纷纷亮相。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<text class="f" data-t="0.8" x="20" y="40" font-size="24" font-weight="700">国外</text><text class="f m" data-t="0.9" x="80" y="40" font-size="14" fill-opacity=".75">GLOBAL</text>
+<text class="f" data-t="0.8" x="580" y="40" font-size="24" font-weight="700">国内</text><text class="f m" data-t="0.9" x="640" y="40" font-size="14" fill-opacity=".75">CHINA</text>
+<path class="d" data-t="0.8" d="M540,20 V480" stroke-width="1" stroke-opacity=".6"/>
+<g class="births" data-layout="20,62,230,92,2,242,104" data-t0="0" data-dt="0" data-small="1"
+ data-cards='[{"d":"2023.03","n":"GPT-4","o":"OpenAI","c":"US","t":4.4},{"d":"2023.03","n":"Claude","o":"Anthropic","c":"US","t":5.4},{"d":"2023.12","n":"Gemini","o":"Google","c":"US","t":6.4},{"d":"2023.02","n":"Llama","o":"Meta","c":"US","t":7.4}]'></g>
+<g class="births" data-layout="580,62,230,92,2,242,104" data-t0="0" data-dt="0" data-small="1"
+ data-cards='[{"d":"2023.03","n":"文心一言","o":"百度","c":"CN","t":9.3},{"d":"2023.04","n":"通义千问","o":"阿里巴巴","c":"CN","t":10.1},{"d":"2023.05","n":"讯飞星火","o":"科大讯飞","c":"CN","t":10.9},{"d":"2023.03","n":"ChatGLM","o":"智谱","c":"CN","t":11.6},{"d":"2023.08","n":"豆包","o":"字节跳动","c":"CN","t":12.2},{"d":"2023.10","n":"Kimi","o":"月之暗面","c":"CN","t":12.8},{"d":"2023.09","n":"混元","o":"腾讯","c":"CN","t":13.3},{"d":"2023.06","n":"百川","o":"百川智能","c":"CN","t":13.7}]'></g>
+<path class="d" data-t="1.4" data-d="1.2" d="M20,590 H1060" stroke-width="1.5"/>
+<g class="months"></g>
+</svg>
+<div class="lb hand w" data-t="1.8" style="left:20px;top:300px;font-size:34px">一年之内，</div>
+<div class="lb hand w" data-t="2.6" style="left:20px;top:352px;font-size:34px">上百个大模型扎堆诞生</div>
+</div>
+</div>
+<!-- ===== S13 2024-2025 VIDEO, REASONING, OPEN SOURCE ===== -->
+<div class="scene" id="s13" data-sheet="13" data-chap="推理与开源" data-tick="12" data-dwg="AI-2025" data-by="OpenAI · 快手 · 深度求索" data-site="San Francisco · 北京 · 杭州">
+<div class="year f" data-t="0.3">2025</div>
+<div class="title sm f" data-t="0.6">视频、推理与开源</div>
+<div class="note w" data-t="1.3">← 中国开源模型震动全球</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. 2024 — 2025</span>Sora、可灵让文字变成视频；推理模型学会“先想再答”。2025 年初，DeepSeek-R1 以开源、低成本登顶多国应用商店。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="20" y="40" width="580" height="170" stroke-width="2.5"/>
+<g class="filmstrip"></g>
+<text class="f" data-t="2.6" x="20" y="240" font-size="20">文字 → 视频</text>
+<g data-g="4.4,0.25">
+<rect class="d" x="20" y="300" width="96" height="56"/><rect class="d" x="140" y="300" width="96" height="56"/><rect class="d" x="260" y="300" width="96" height="56"/><rect class="d" x="380" y="300" width="96" height="56"/><rect class="d" x="500" y="300" width="100" height="56" stroke="#ffe27a" stroke-width="2.5"/>
+</g>
+<g data-g="4.6,0.25">
+<text class="f" x="68" y="336" text-anchor="middle" font-size="20">问题</text><text class="f" x="188" y="336" text-anchor="middle" font-size="20">思考 1</text><text class="f" x="308" y="336" text-anchor="middle" font-size="20">思考 2</text><text class="f" x="428" y="336" text-anchor="middle" font-size="20">思考 3</text><text class="f y" x="550" y="336" text-anchor="middle" font-size="20">答案</text>
+</g>
+<g data-g="4.8,0.25"><path class="d" d="M116,328 H136" marker-end="url(#ar)"/><path class="d" d="M236,328 H256" marker-end="url(#ar)"/><path class="d" d="M356,328 H376" marker-end="url(#ar)"/><path class="d" d="M476,328 H496" marker-end="url(#ar)"/></g>
+<g data-g="9.4,0.2">
+<rect class="d" x="60" y="490" width="96" height="76" rx="6" stroke-width="2.5"/>
+<path class="d" d="M76,490 V458 A32,32 0 0 1 140,458 V446" stroke-width="2.5"/>
+<circle class="d" cx="108" cy="522" r="8"/><path class="d" d="M108,530 V546"/>
+</g>
+<text class="f" data-t="10.0" x="180" y="524" font-size="24" font-weight="500">开源权重</text>
+<text class="f m" data-t="10.1" x="180" y="552" font-size="14" fill-opacity=".75">OPEN WEIGHTS · 人人可下载、可改进</text>
+<g class="births" data-layout="640,40,420,90,1,0,104" data-t0="0" data-dt="0"
+ data-cards='[{"d":"2024.02","n":"Sora","o":"OpenAI","c":"US","t":1.8},{"d":"2024.06","n":"可灵","o":"快手","c":"CN","t":2.8},{"d":"2024.09","n":"o1 推理模型","o":"OpenAI","c":"US","t":5.0}]'></g>
+<g class="births" data-layout="640,356,420,120,1,0,0" data-t0="0" data-dt="0"
+ data-cards='[{"d":"2025.01","n":"DeepSeek-R1","o":"深度求索 · 杭州","c":"CN","hl":1,"t":8.6}]'></g>
+</svg>
+<div class="lb hand w" data-t="6.0" style="left:20px;top:372px;font-size:30px">先想，再答</div>
+<div class="lb hand w" data-t="10.6" style="left:640px;top:496px;font-size:30px">开源 · 低成本 · 震动全球</div>
+</div>
+</div>
+<!-- ===== S11 2026 TODAY ===== -->
+<div class="scene" id="s14" data-sheet="14" data-chap="行动" data-tick="13" data-dwg="AI-2026" data-by="全世界的研究者" data-site="地球 · Earth">
+<div class="year f" data-t="0.3">2026</div>
+<div class="title sm f" data-t="0.6">今天：从对话到行动</div>
+<div class="note w" data-t="1.3">← 我们正站在这里</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. 2023 — 2026</span>大模型学会了看图、听音、写代码，学会“先想再答”，并开始作为智能体调用工具、自主完成任务。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<rect class="d" data-t="0.7" x="420" y="220" width="260" height="200" stroke-width="3"/>
+<rect class="d" data-t="1.0" x="436" y="236" width="228" height="168" stroke-width="1" stroke-opacity=".7"/>
+<text class="f" data-t="1.3" x="550" y="312" text-anchor="middle" font-size="34" font-weight="700">大模型</text>
+<text class="f m" data-t="1.4" x="550" y="350" text-anchor="middle" font-size="17" fill-opacity=".8">FOUNDATION MODEL</text>
+<g class="spin" data-t="2.8"><g transform="translate(640,400)" class="gear"></g></g>
+<rect class="d" data-t="1.5" x="70" y="60" width="210" height="96"/><text class="f" data-t="1.8" x="175" y="104" text-anchor="middle" font-size="28" font-weight="500">语言</text><text class="f m" data-t="1.9" x="175" y="136" text-anchor="middle" font-size="15" fill-opacity=".75">LANGUAGE</text>
+<rect class="d" data-t="1.7" x="820" y="60" width="210" height="96"/><text class="f" data-t="2.0" x="925" y="104" text-anchor="middle" font-size="28" font-weight="500">抽象</text><text class="f m" data-t="2.1" x="925" y="136" text-anchor="middle" font-size="15" fill-opacity=".75">ABSTRACTION</text>
+<rect class="d" data-t="1.9" x="70" y="480" width="210" height="96"/><text class="f" data-t="2.2" x="175" y="524" text-anchor="middle" font-size="28" font-weight="500">学习</text><text class="f m" data-t="2.3" x="175" y="556" text-anchor="middle" font-size="15" fill-opacity=".75">LEARNING</text>
+<rect class="d" data-t="2.1" x="820" y="480" width="210" height="96"/><text class="f" data-t="2.4" x="925" y="524" text-anchor="middle" font-size="28" font-weight="500">创造</text><text class="f m" data-t="2.5" x="925" y="556" text-anchor="middle" font-size="15" fill-opacity=".75">CREATIVITY</text>
+<g data-g="2.6,0.15">
+<path class="d" d="M280,108 H360 V250 H416" marker-end="url(#ar)"/>
+<path class="d" d="M820,108 H740 V250 H684" marker-end="url(#ar)"/>
+<path class="d" d="M280,528 H360 V390 H416" marker-end="url(#ar)"/>
+<path class="d" d="M820,528 H740 V390 H684" marker-end="url(#ar)"/>
+</g>
+<g data-g="3.4,0.15">
+<path class="d" d="M470,420 L402,556"/><path class="d" d="M550,420 V556"/><path class="d" d="M610,446 L690,556"/>
+</g>
+<g data-g="3.8,0.12">
+<rect class="d" x="342" y="560" width="120" height="50"/><rect class="d" x="490" y="560" width="120" height="50"/><rect class="d" x="638" y="560" width="120" height="50"/>
+</g>
+<g data-g="4.2,0.1">
+<text class="f" x="402" y="592" text-anchor="middle" font-size="20">视觉</text><text class="f" x="550" y="592" text-anchor="middle" font-size="20">语音</text><text class="f" x="698" y="592" text-anchor="middle" font-size="20">工具</text>
+</g>
+<g data-g="6.2,0.9" stroke="#ffe27a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path class="d" data-d="0.4" d="M236,78 L252,98 L290,40"/>
+<path class="d" data-d="0.4" d="M236,498 L252,518 L290,460"/>
+<path class="d" data-d="0.4" d="M986,78 L1002,98 L1040,40"/>
+</g>
+</svg>
+<div class="lb hand w" data-t="5.0" style="left:318px;top:30px;font-size:32px">1956 年的清单，完成了多少？</div>
+<div class="lb hand w" data-t="6.4" style="left:70px;top:164px;font-size:26px">对话 · 翻译 · 写作</div>
+<div class="lb hand w" data-t="7.3" style="left:70px;top:584px;font-size:26px">从海量数据中学习</div>
+<div class="lb hand w" data-t="8.2" style="left:820px;top:164px;font-size:26px">推理 · 数学 · 编程</div>
+<div class="lb hand w" data-t="9.6" style="left:820px;top:584px;font-size:26px">？ 交给你来判断</div>
+</div>
+</div>
+<!-- ===== S15 ENDING: OPEN QUESTIONS ===== -->
+<div class="scene" id="s15" data-sheet="15" data-chap="未完" data-tick="14" data-dwg="AI-20??" data-by="你" data-site="这里 · Here">
+<svg class="full" width="1920" height="1080" fill="none" stroke="#eaf3ff" stroke-width="2">
+<path id="s15line" class="d ys" data-t="7.2" data-d="2.2" d="M300,700 C640,688 980,712 1520,694" stroke-width="3" stroke-linecap="round"/>
+<g class="follow" data-path="s15line" data-t="7.2" data-d="2.2" stroke="#eaf3ff" stroke-width="2">
+<path d="M0,0 L10,-26 L112,-68 L120,-48 L18,-6 Z" fill="#0f3f86"/>
+<path d="M0,0 L10,-26 L18,-6 Z" fill="#ffe27a" stroke="#ffe27a"/>
+<path d="M96,-61 L104,-41"/>
+</g>
+</svg>
+<div class="lb hand w" data-t="0.8" style="left:300px;top:170px;font-size:44px">1956：“两个月能搞定？”</div>
+<div class="lb hand w" data-t="2.8" style="left:300px;top:240px;font-size:44px">2026：七十年了，图纸还没画完。</div>
+<div class="lb f" data-t="4.1" data-d="0.9" style="left:296px;top:350px;font-size:92px;font-weight:700;letter-spacing:6px">下一个诞生的，会是什么？</div>
+<div class="lb f" data-t="6.4" data-d="0.9" style="left:300px;top:500px;font-size:54px;font-weight:500;letter-spacing:3px">当机器也能画图纸，执笔的，还会是我们吗？</div>
+<div class="lb hand w" data-t="10.2" style="left:1560px;top:640px;font-size:44px">你的答案是？</div>
+<div class="lb f mono" data-t="11.0" style="left:300px;top:750px;font-size:20px;letter-spacing:5px">人工智能简史 · A BRIEF HISTORY OF AI · 1950 — ?</div>
+</div>
+<div id="hud">
+<div id="tag"></div>
+<div id="tl"><div class="bar"></div><div class="fill"></div><div class="on"></div></div>
+<div id="tb">
+<div class="h">项目 PROJECT</div><div class="big">人工智能简史</div><div class="h">图号 DWG</div><div class="mono" id="tb-dwg"></div>
+<div class="h">设计 BY</div><div style="grid-column:2/5" id="tb-by"></div>
+<div class="h">地点 SITE</div><div id="tb-site"></div><div class="h">比例 SCALE</div><div class="mono">1 : 1</div>
+</div>
+</div>
+<div id="sub"><span></span></div>
+<div id="scan"></div>
+<div id="fade"></div>
+<script src="config.js"></script>
+<script src="scenes.js"></script>
+<script src="engine.js"></script>
+</body></html>

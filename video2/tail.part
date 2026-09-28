@@ -1,0 +1,16 @@
+<div id="hud">
+<div id="tag"></div>
+<div id="tl"><div class="bar"></div><div class="fill"></div><div class="on"></div></div>
+<div id="tb">
+<div class="h">项目 PROJECT</div><div class="big">人工智能简史</div><div class="h">图号 DWG</div><div class="mono" id="tb-dwg"></div>
+<div class="h">设计 BY</div><div style="grid-column:2/5" id="tb-by"></div>
+<div class="h">地点 SITE</div><div id="tb-site"></div><div class="h">比例 SCALE</div><div class="mono">1 : 1</div>
+</div>
+</div>
+<div id="sub"><span></span></div>
+<div id="scan"></div>
+<div id="fade"></div>
+<script src="config.js"></script>
+<script src="scenes.js"></script>
+<script src="engine.js"></script>
+</body></html>

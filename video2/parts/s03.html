@@ -1,0 +1,42 @@
+<!-- ===== S03 1958-1966 PERCEPTRON + ELIZA ===== -->
+<div class="scene" id="s03" data-sheet="03" data-chap="学习与对话" data-tick="2" data-dwg="AI-1960s" data-by="Frank Rosenblatt · Joseph Weizenbaum" data-site="Cornell · MIT, USA">
+<div class="year f" data-t="0.3">1960s</div>
+<div class="title sm f" data-t="0.6">会学习，也会聊天</div>
+<div class="note w" data-t="1.3">← 感知机与 ELIZA</div>
+<div class="spec f" data-t="1.9"><span class="k">SPEC. PERCEPTRON 1958 · ELIZA 1966</span>感知机模仿神经元，答错就调整权重；ELIZA 只会套用句式来“对话”，却让许多人对它倾诉心事。</div>
+<div class="art">
+<svg width="1080" height="660" fill="none" stroke="#eaf3ff" stroke-width="2">
+<g data-g="0.8,0.1"><circle class="d" cx="50" cy="110" r="24"/><circle class="d" cx="50" cy="200" r="24"/><circle class="d" cx="50" cy="290" r="24"/></g>
+<g data-g="1.0,0.08"><text class="f m" x="50" y="118" text-anchor="middle" font-size="20">x₁</text><text class="f m" x="50" y="208" text-anchor="middle" font-size="20">x₂</text><text class="f m" x="50" y="298" text-anchor="middle" font-size="20">x₃</text></g>
+<g data-g="1.3,0.12">
+<path class="d" id="s03l1" d="M71.6,120.4 L218.6,180" stroke-width="3.5"/>
+<path class="d" id="s03l2" d="M74,200 L214,200" stroke-width="1.8"/>
+<path class="d" id="s03l3" d="M71.6,279.6 L218.6,220" stroke-width="2.6"/>
+</g>
+<circle class="d" data-t="1.8" cx="260" cy="200" r="46" stroke-width="3"/>
+<text class="f" data-t="2.1" x="260" y="216" text-anchor="middle" font-size="46">Σ</text>
+<path class="d" data-t="2.2" d="M306,200 H326" marker-end="url(#ar)"/>
+<rect class="d" data-t="2.3" x="330" y="160" width="90" height="80"/>
+<path class="d" data-t="2.6" d="M342,228 H372 V176 H410" stroke-width="3"/>
+<path class="d" data-t="2.7" d="M420,200 H452" marker-end="url(#ar)"/>
+<circle class="d" data-t="2.9" cx="478" cy="200" r="22" stroke-width="2.5"/>
+<text class="f m" data-t="3.0" x="478" y="208" text-anchor="middle" font-size="22">y</text>
+<circle class="flow" data-path="s03l1" data-t="3.2" data-period="1.4" r="4.5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s03l2" data-t="3.4" data-period="1.4" r="4.5" fill="#ffe27a" stroke="none"/>
+<circle class="flow" data-path="s03l3" data-t="3.6" data-period="1.4" r="4.5" fill="#ffe27a" stroke="none"/>
+<path class="d ys" data-t="3.4" data-d="1.0" d="M478,222 V330 H150 V262" stroke-width="2.2" marker-end="url(#ary)"/>
+<text class="f" data-t="3.0" x="250" y="410" text-anchor="middle" font-size="24" font-weight="500">感知机 · 1958</text>
+<text class="f m" data-t="3.1" x="250" y="438" text-anchor="middle" font-size="14" fill-opacity=".75">MARK I PERCEPTRON</text>
+<rect class="d" data-t="4.0" x="560" y="40" width="500" height="380" rx="10" stroke-width="2.5"/>
+<path class="d" data-t="4.3" d="M560,80 H1060"/>
+<text class="f m" data-t="4.4" x="810" y="66" text-anchor="middle" font-size="16" fill-opacity=".85">ELIZA — MIT, 1966</text>
+<rect class="blink" data-t="9.0" x="586" y="312" width="12" height="24" fill="#eaf3ff" stroke="none"/>
+</svg>
+<div class="lb ty mono" data-t="4.8" data-d="0.8" style="left:586px;top:104px;font-size:22px">&gt; 我最近很难过。</div>
+<div class="lb ty mono" data-t="5.8" data-d="1.0" style="left:586px;top:154px;font-size:22px;color:#ffe27a">ELIZA：你为什么觉得难过？</div>
+<div class="lb ty mono" data-t="7.0" data-d="0.9" style="left:586px;top:204px;font-size:22px">&gt; 我和家人吵架了。</div>
+<div class="lb ty mono" data-t="8.1" data-d="1.0" style="left:586px;top:254px;font-size:22px;color:#ffe27a">ELIZA：跟我说说你的家人。</div>
+<div class="lb hand w" data-t="3.8" style="left:150px;top:340px;font-size:24px">答错就调权重</div>
+<div class="lb hand w" data-t="9.4" style="left:560px;top:438px;font-size:30px">只会套句式，却有人向它倾诉心事</div>
+</div>
+</div>
